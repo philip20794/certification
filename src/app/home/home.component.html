@@ -1,0 +1,37 @@
+<div class="container">
+  <div>
+    <h2>Enter a zipcode:</h2>
+    <input class="form-control" placeholder="Zipcode" type="number" [(ngModel)]="zipcode">
+    <br>
+    <button class="btn btn-primary" (click)="addZipcode()">
+      Add location
+    </button>
+  </div>
+</div>
+<br>
+
+
+<div *ngFor="let city of cities" class="container">
+  <div class="well flex">
+    <div>
+      <h3>{{city.name}} ({{city.zipcode}})</h3>
+      <h4>Current conditions: {{city.weather.main}}</h4>
+      <h4>Temperatures today:</h4>
+      <p>
+        Current {{city.temp}} °F
+        - Max {{city.temp_max}} °F
+        - Min {{city.temp_min}} °F
+      </p>
+      <p>
+        <a href="/forecast/{{city.zipcode}}">Show 5-day forecast for Rancho Cordova</a>
+      </p>
+    </div>
+    <div>
+      <button class="close" (click)="this.removeZipcode(city.zipcode)">×</button>
+      <img [src]="city.weather.icon">
+    </div>
+  </div>
+  </div>
+<br>
+
+

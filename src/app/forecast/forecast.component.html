@@ -1,0 +1,20 @@
+<div class="container" *ngIf="forecaste">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">5-day forecast for {{forecaste.name}}</h3>
+
+    </div>
+    <ul class="list-group" *ngFor="let day of forecaste.days">
+      <li class="list-group-item">
+      {{day.date.toLocaleDateString('us-US', dateConfig)}}:
+      {{day.weather.main}}
+      - Hight: {{day.temp.max}} °F
+      - Low: {{day.temp.min}} °F
+
+      <img class="icon" [src]="day.weather.icon">
+    </li>
+    </ul>
+  </div>
+  <br>
+  <button class="btn btn-success" tabindex="0" id="mainPageBtn" (click)="back()">&lt; Back to main page</button>
+</div>
